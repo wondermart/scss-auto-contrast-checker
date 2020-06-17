@@ -30,7 +30,7 @@ twitter_username: wondermart
 github_username:  wondermart
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 

@@ -1,0 +1,68 @@
+$color-undefined: deeppink;
+
+// ==============================================
+// tbd
+
+$colors: (
+  coral-medium: #EA503F,
+  sunshine-medium: #FFC100,
+  lime-medium: #B7CB45,
+  teal-medium: #45CB9F,
+  sea-medium: #077383,
+  fog-medium: #848E8F,
+  test-color: #000000
+);
+
+$utility-colors: (
+  pass-badge: #000000,
+  pass-text: #ffffff,
+  fail-badge: #000000,
+  fail-text: #ffffff
+  // probably more here for like... body text, label text, swatch outlines if needed, etc
+);
+
+// return a color name from the map
+@function demo($name: primary, $scheme: $colors) {
+  @if map-has-key($scheme, $name) {
+    @return map-get($scheme, $name);
+  }
+  @return $color-undefined;
+}
+
+@function color($color-set: $colors) {
+  // @if map-has-key()
+}
+
+$color-string: '';
+
+// for each color in the map, generate a class with that color name
+@each $color, $value in $colors {
+
+  // build a class for each color
+  .test-#{$color} {
+    // background-color: color($color, $colors);
+    background-color: $value;
+  }
+
+  // build string of 'color: value' in json format
+  // $color-string: $color-string + '{' + $color + ':' + $value + '}';
+  $color-string: $color-string + '"#{$color}": "#{$value}",';
+}
+
+// remove last comma, add brackets
+$color-string: '{' + str-slice($color-string, $start-at: 1, $end-at: -2) + '}';
+
+// append the color name to some place the html can get to it
+body:before {
+  content: $color-string;
+  // display: none;
+}
+
+.color {
+  // 
+}
+
+// helllo echo are you awake
+body {
+  // background: purple;
+}

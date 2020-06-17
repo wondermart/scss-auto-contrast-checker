@@ -1,0 +1,9 @@
+<div class="color">
+  <h2>{{ page.color.name|default:'color name here' }}</h2>
+{# loop through the colors and print a test swatch for each #}
+  <div class="color__test">
+    <div class="color__test-swatch"></div>
+    <h3>{{ item.name|default:'name of color being tested' }}</h3>
+    <h4>{{ item.hex|default:'hex value of color being tested' }}</h4>
+  </div>
+</div>
