@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+## SCSS Auto Contrast Checker (experimental)
 
-You can use the [editor on GitHub](https://github.com/wondermart/scss-auto-contrast-checker/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+The goal for this project is to generate an automatic set of color contrast test swatches given a set of color values defined in a scss map.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+A live demo is provided here: [SCSS Auto-contrast Checker Live Demo](https://wondermart.github.io/scss-auto-contrast-checker/). It doesn't actually work yet!
 
-### Markdown
+### Background and Purpose
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+I make a lot of pattern libraries. Part of the process of building a pattern library is setting up a system for color scheming, and then providing documentation for how that system works. In recent libraries, I've been including a color contrast reference ([here's an example](https://newcity.gitlab.io/gmu-cos/components/preview/color-contrast.html)). This reference page shows all the colors available in this library, tested for passing contrast ratios against each other. The test checks for a contrast of 4.5:1 (WCAG 2.0 AA).
 
-```markdown
-Syntax highlighted code block
+This reference is helpful, but annoying to update as the system grows and changes (especially during the library's initial development). It requires the developer to define the colors in two places - both in the scss configuration, and in the data file that drives the static site generator (Fractal, in the example's case). That also means that it depends on these colors having the same names in both places, and is a whole don't-repeat-yourself failure.
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/wondermart/scss-auto-contrast-checker/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+So my objective with this experiment was to find a good way to declare the colors **once** in the scss and let the system handle the rest. There are probably a lot of really gross ways to achieve this (probably including whatever is currently happening on the live demo right now) — hopefully I can isolate at least one good one.
